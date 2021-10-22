@@ -121,7 +121,7 @@ func TestQuadratic(t *testing.T) {
 		dc.Stroke()
 	}
 	saveImage(dc, "TestQuadratic")
-	checkHash(t, dc, "87eec03808f687bd012a10752c61cdc8")
+	checkHash(t, dc, "9cbb22cb65ce86113467071bbb23c895")
 }
 
 func TestCubic(t *testing.T) {
@@ -145,7 +145,7 @@ func TestCubic(t *testing.T) {
 		dc.Stroke()
 	}
 	saveImage(dc, "TestCubic")
-	checkHash(t, dc, "ff87a762b42863198c78c923b17033d8")
+	checkHash(t, dc, "04749d82fe003683f6d6700964562b28")
 }
 
 func TestFill(t *testing.T) {
@@ -309,7 +309,57 @@ func TestDashes(t *testing.T) {
 		dc.Stroke()
 	}
 	saveImage(dc, "TestDashes")
-	checkHash(t, dc, "2c4c6e23ae4219f1dbfd8c3ea5a8be68")
+	checkHash(t, dc, "94ee9b2ce00b8896815aecf8045a785d")
+}
+
+func TestIssue85(t *testing.T) {
+	// https://github.com/fogleman/gg/issues/85
+	const (
+		W  = 1024.0
+		H  = 1024.0
+		nn = 10000
+	)
+
+	var (
+		N  = float64(nn)
+		dx = float64(W) / float64(nn)
+
+		ylow = H / 3.0
+		yhi  = 2.0 * H / 3.0
+	)
+
+	dc := NewContext(W, H)
+	dc.SetRGB(1, 1, 1)
+	dc.Clear()
+	dc.SetRGB(0, 0, 0)
+	dc.SetLineWidth(1)
+	var (
+		x = 0.0
+		y = ylow
+	)
+	dc.MoveTo(x, y)
+	for i := 1; i < nn; i++ {
+		j := float64(i)
+		x += dx
+		switch {
+		case j < 0.1*N:
+			y = ylow
+		case 0.1*N <= j && j < 0.5*N:
+			y = yhi
+		case 0.5*N <= j && j < 0.55*N:
+			y = ylow
+		case 0.55*N <= j && j < 0.9*N:
+			y = yhi
+		default:
+			y = ylow
+		}
+
+		dc.LineTo(x, y)
+	}
+	dc.Stroke()
+
+	saveImage(dc, "TestIssue85")
+	checkHash(t, dc, "865a6575a2f1312ed5728e192161721e")
 }
 
 func BenchmarkCircles(b *testing.B) {
