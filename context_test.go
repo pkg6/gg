@@ -27,6 +27,8 @@ func hash(dc *Context) string {
 }
 
 func checkHash(t *testing.T, dc *Context, expected string) {
+	t.Helper()
+
 	actual := hash(dc)
 	if actual != expected {
 		t.Fatalf("expected hash: %s != actual hash: %s", expected, actual)
