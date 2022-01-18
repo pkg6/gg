@@ -1,8 +1,11 @@
 # Go Graphics
 
+[![Build status](https://builds.sr.ht/~sbinet/gg.svg)](https://builds.sr.ht/~sbinet/gg?)
+[![GoDoc](https://pkg.go.dev/badge/git.sr.ht/~sbinet/gg)](https://pkg.go.dev/git.sr.ht/~sbinet/gg)
+
 `gg` is a library for rendering 2D graphics in pure Go.
 
-`git.sr.ht/~sbinet/gg` is a fork of [fogleman/gg](https://github.com/fogleman/gg) which doesn't seem to be maintained (as of January 2022)
+`git.sr.ht/~sbinet/gg` is a fork of [fogleman/gg](https://github.com/fogleman/gg) which doesn't seem to be maintained (as of January 2022).
 
 ![Stars](http://i.imgur.com/CylQIJt.png)
 
