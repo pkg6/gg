@@ -2,6 +2,7 @@
 
 [![Build status](https://builds.sr.ht/~sbinet/gg.svg)](https://builds.sr.ht/~sbinet/gg?)
 [![GoDoc](https://pkg.go.dev/badge/git.sr.ht/~sbinet/gg)](https://pkg.go.dev/git.sr.ht/~sbinet/gg)
+[![godocs.io](https://godocs.io/git.sr.ht/~sbinet/gg?status.svg)](https://godocs.io/git.sr.ht/~sbinet/gg)
 
 `gg` is a library for rendering 2D graphics in pure Go.
 
