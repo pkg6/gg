@@ -2,20 +2,18 @@
 
 `gg` is a library for rendering 2D graphics in pure Go.
 
+`git.sr.ht/~sbinet/gg` is a fork of [fogleman/gg](https://github.com/fogleman/gg) which doesn't seem to be maintained (as of January 2022)
+
 ![Stars](http://i.imgur.com/CylQIJt.png)
 
 ## Installation
 
-    go get -u github.com/fogleman/gg
-
-Alternatively, you may use gopkg.in to grab a specific major-version:
-
-    go get -u gopkg.in/fogleman/gg.v1
+    go get -u git.sr.ht/~sbinet/gg
 
 ## Documentation
 
-- godoc: https://godoc.org/github.com/fogleman/gg
-- pkg.go.dev: https://pkg.go.dev/github.com/fogleman/gg?tab=doc
+- godoc: https://godoc.org/git.sr.ht/~sbinet/gg
+- pkg.go.dev: https://pkg.go.dev/git.sr.ht/~sbinet/gg?tab=doc
 
 ## Hello, Circle!
 
@@ -24,7 +22,7 @@ Look how easy!
 ```go
 package main
 
-import "github.com/fogleman/gg"
+import "git.sr.ht/~sbinet/gg"
 
 func main() {
     dc := gg.NewContext(1000, 1000)
@@ -37,7 +35,7 @@ func main() {
 
 ## Examples
 
-There are [lots of examples](https://github.com/fogleman/gg/tree/master/examples) included. They're mostly for testing the code, but they're good for learning, too.
+There are [lots of examples](https://git.sr.ht/~sbinet/gg/tree/main/examples) included. They're mostly for testing the code, but they're good for learning, too.
 
 ![Examples](http://i.imgur.com/tMFoyzu.png)
 
@@ -203,7 +201,7 @@ See the output of this example below.
 ```go
 package main
 
-import "github.com/fogleman/gg"
+import "git.sr.ht/~sbinet/gg"
 
 func main() {
 	const S = 1024

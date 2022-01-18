@@ -1,6 +1,12 @@
+// Copyright ©2022 The gg Authors. All rights reserved.
+// Use of this source code is governed by a MIT-style
+// license that can be found in the LICENSE file.
+
+//go:build ignore
+
 package main
 
-import "github.com/fogleman/gg"
+import "git.sr.ht/~sbinet/gg"
 
 var lines = []string{
 	"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
