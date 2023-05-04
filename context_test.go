@@ -362,6 +362,20 @@ func TestIssue85(t *testing.T) {
 	checkHash(t, dc, "865a6575a2f1312ed5728e192161721e")
 }
 
+func TestSetInterpolator(t *testing.T) {
+	ctx := NewContext(100, 100)
+	defer func() {
+		e := recover()
+		if e == nil {
+			t.Fatalf("expected a panic")
+		}
+		if got, want := e.(error).Error(), "gg: invalid interpolator"; got != want {
+			t.Fatalf("invalid panic message:\ngot= %q\nwant=%q", got, want)
+		}
+	}()
+	ctx.SetInterpolator(nil)
+}
+
 func BenchmarkCircles(b *testing.B) {
 	dc := NewContext(1000, 1000)
 	dc.SetRGB(1, 1, 1)

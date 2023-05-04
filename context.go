@@ -80,6 +80,7 @@ type Context struct {
 	fontHeight    float64
 	matrix        Matrix
 	stack         []*Context
+	interp        draw.Interpolator
 }
 
 // NewContext creates a new image.RGBA with the specified width and height
@@ -112,6 +113,7 @@ func NewContextForRGBA(im *image.RGBA) *Context {
 		fontFace:      basicfont.Face7x13,
 		fontHeight:    13,
 		matrix:        Identity(),
+		interp:        draw.BiLinear,
 	}
 }
 
@@ -664,6 +666,14 @@ func (dc *Context) DrawRegularPolygon(n int, x, y, r, rotation float64) {
 	dc.ClosePath()
 }
 
+// SetInterpolator sets the current context's drawing interpolator.
+func (dc *Context) SetInterpolator(interp draw.Interpolator) {
+	if interp == nil {
+		panic(errors.New("gg: invalid interpolator"))
+	}
+	dc.interp = interp
+}
+
 // DrawImage draws the specified image at the specified point.
 func (dc *Context) DrawImage(im image.Image, x, y int) {
 	dc.DrawImageAnchored(im, x, y, 0, 0)
@@ -676,18 +686,20 @@ func (dc *Context) DrawImageAnchored(im image.Image, x, y int, ax, ay float64) {
 	s := im.Bounds().Size()
 	x -= int(ax * float64(s.X))
 	y -= int(ay * float64(s.Y))
-	transformer := draw.BiLinear
-	fx, fy := float64(x), float64(y)
-	m := dc.matrix.Translate(fx, fy)
-	s2d := f64.Aff3{m.XX, m.XY, m.X0, m.YX, m.YY, m.Y0}
-	if dc.mask == nil {
-		transformer.Transform(dc.im, s2d, im, im.Bounds(), draw.Over, nil)
-	} else {
-		transformer.Transform(dc.im, s2d, im, im.Bounds(), draw.Over, &draw.Options{
+	var (
+		fx  = float64(x)
+		fy  = float64(y)
+		m   = dc.matrix.Translate(fx, fy)
+		s2d = f64.Aff3{m.XX, m.XY, m.X0, m.YX, m.YY, m.Y0}
+		opt *draw.Options
+	)
+	if dc.mask != nil {
+		opt = &draw.Options{
 			DstMask:  dc.mask,
 			DstMaskP: image.Point{},
-		})
+		}
 	}
+	dc.interp.Transform(dc.im, s2d, im, im.Bounds(), draw.Over, opt)
 }
 
 // Text Functions
@@ -731,11 +743,10 @@ func (dc *Context) drawString(im *image.RGBA, s string, x, y float64) {
 			continue
 		}
 		sr := dr.Sub(dr.Min)
-		transformer := draw.BiLinear
 		fx, fy := float64(dr.Min.X), float64(dr.Min.Y)
 		m := dc.matrix.Translate(fx, fy)
 		s2d := f64.Aff3{m.XX, m.XY, m.X0, m.YX, m.YY, m.Y0}
-		transformer.Transform(d.Dst, s2d, d.Src, sr, draw.Over, &draw.Options{
+		dc.interp.Transform(d.Dst, s2d, d.Src, sr, draw.Over, &draw.Options{
 			SrcMask:  mask,
 			SrcMaskP: maskp,
 		})
