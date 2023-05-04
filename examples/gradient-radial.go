@@ -2,17 +2,24 @@
 // Use of this source code is governed by a MIT-style
 // license that can be found in the LICENSE file.
 
-//go:build ignore
+//go:build example
 
 package main
 
 import (
+	"flag"
 	"image/color"
+	"log"
 
 	"git.sr.ht/~sbinet/gg"
 )
 
 func main() {
+	var (
+		fname = flag.String("o", "gradient-radial.png", "output file")
+	)
+	flag.Parse()
+
 	dc := gg.NewContext(400, 200)
 
 	grad := gg.NewRadialGradient(100, 100, 10, 100, 120, 80)
@@ -29,5 +36,8 @@ func main() {
 	dc.DrawCircle(100, 120, 80)
 	dc.Stroke()
 
-	dc.SavePNG("out.png")
+	err := dc.SavePNG(*fname)
+	if err != nil {
+		log.Fatalf("could not save to file: %+v", err)
+	}
 }

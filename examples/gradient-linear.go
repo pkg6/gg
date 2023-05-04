@@ -2,17 +2,24 @@
 // Use of this source code is governed by a MIT-style
 // license that can be found in the LICENSE file.
 
-//go:build ignore
+//go:build example
 
 package main
 
 import (
+	"flag"
 	"image/color"
+	"log"
 
 	"git.sr.ht/~sbinet/gg"
 )
 
 func main() {
+	var (
+		fname = flag.String("o", "gradient-linear.png", "output file")
+	)
+	flag.Parse()
+
 	dc := gg.NewContext(500, 400)
 
 	grad := gg.NewLinearGradient(20, 320, 400, 20)
@@ -41,5 +48,8 @@ func main() {
 	dc.ClosePath()
 	dc.Fill()
 
-	dc.SavePNG("out.png")
+	err := dc.SavePNG(*fname)
+	if err != nil {
+		log.Fatalf("could not save to file: %+v", err)
+	}
 }

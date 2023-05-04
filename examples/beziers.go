@@ -2,18 +2,24 @@
 // Use of this source code is governed by a MIT-style
 // license that can be found in the LICENSE file.
 
-//go:build ignore
+//go:build example
 
 package main
 
 import (
+	"flag"
+	"log"
 	"math/rand"
 
 	"git.sr.ht/~sbinet/gg"
 )
 
+var (
+	rnd = rand.New(rand.NewSource(1234))
+)
+
 func random() float64 {
-	return rand.Float64()*2 - 1
+	return rnd.Float64()*2 - 1
 }
 
 func point() (x, y float64) {
@@ -63,6 +69,11 @@ func randomCubic(dc *gg.Context) {
 }
 
 func main() {
+	var (
+		fname = flag.String("o", "beziers.png", "output file")
+	)
+	flag.Parse()
+
 	const (
 		S = 256
 		W = 8
@@ -86,5 +97,9 @@ func main() {
 			dc.Pop()
 		}
 	}
-	dc.SavePNG("out.png")
+
+	err := dc.SavePNG(*fname)
+	if err != nil {
+		log.Fatalf("could not save to file: %+v", err)
+	}
 }

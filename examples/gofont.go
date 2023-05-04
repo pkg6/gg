@@ -2,11 +2,12 @@
 // Use of this source code is governed by a MIT-style
 // license that can be found in the LICENSE file.
 
-//go:build ignore
+//go:build example
 
 package main
 
 import (
+	"flag"
 	"log"
 
 	"git.sr.ht/~sbinet/gg"
@@ -15,6 +16,11 @@ import (
 )
 
 func main() {
+	var (
+		fname = flag.String("o", "gofont.png", "output file")
+	)
+	flag.Parse()
+
 	font, err := truetype.Parse(goregular.TTF)
 	if err != nil {
 		log.Fatal(err)
@@ -28,5 +34,9 @@ func main() {
 	dc.Clear()
 	dc.SetRGB(0, 0, 0)
 	dc.DrawStringAnchored("Hello, world!", 512, 512, 0.5, 0.5)
-	dc.SavePNG("out.png")
+
+	err = dc.SavePNG(*fname)
+	if err != nil {
+		log.Fatalf("could not save to file: %+v", err)
+	}
 }

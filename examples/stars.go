@@ -2,11 +2,13 @@
 // Use of this source code is governed by a MIT-style
 // license that can be found in the LICENSE file.
 
-//go:build ignore
+//go:build example
 
 package main
 
 import (
+	"flag"
+	"log"
 	"math"
 	"math/rand"
 
@@ -27,19 +29,27 @@ func Polygon(n int) []Point {
 }
 
 func main() {
+	var (
+		fname = flag.String("o", "stars.png", "output file")
+	)
+	flag.Parse()
+
 	const W = 1200
 	const H = 120
 	const S = 100
 	dc := gg.NewContext(W, H)
 	dc.SetHexColor("#FFFFFF")
 	dc.Clear()
-	n := 5
-	points := Polygon(n)
+	var (
+		n      = 5
+		points = Polygon(n)
+		rnd    = rand.New(rand.NewSource(1234))
+	)
 	for x := S / 2; x < W; x += S {
 		dc.Push()
-		s := rand.Float64()*S/4 + S/4
+		s := rnd.Float64()*S/4 + S/4
 		dc.Translate(float64(x), H/2)
-		dc.Rotate(rand.Float64() * 2 * math.Pi)
+		dc.Rotate(rnd.Float64() * 2 * math.Pi)
 		dc.Scale(s, s)
 		for i := 0; i < n+1; i++ {
 			index := (i * 2) % n
@@ -53,5 +63,9 @@ func main() {
 		dc.Fill()
 		dc.Pop()
 	}
-	dc.SavePNG("out.png")
+
+	err := dc.SavePNG(*fname)
+	if err != nil {
+		log.Fatalf("could not save to file: %+v", err)
+	}
 }

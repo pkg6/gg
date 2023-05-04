@@ -2,13 +2,23 @@
 // Use of this source code is governed by a MIT-style
 // license that can be found in the LICENSE file.
 
-//go:build ignore
+//go:build example
 
 package main
 
-import "git.sr.ht/~sbinet/gg"
+import (
+	"flag"
+	"log"
+
+	"git.sr.ht/~sbinet/gg"
+)
 
 func main() {
+	var (
+		fname = flag.String("o", "ellipse.png", "output file")
+	)
+	flag.Parse()
+
 	const S = 1024
 	dc := gg.NewContext(S, S)
 	dc.SetRGBA(0, 0, 0, 0.1)
@@ -19,8 +29,15 @@ func main() {
 		dc.Fill()
 		dc.Pop()
 	}
-	if im, err := gg.LoadImage("examples/gopher.png"); err == nil {
-		dc.DrawImageAnchored(im, S/2, S/2, 0.5, 0.5)
+
+	im, err := gg.LoadImage("testdata/gopher.png")
+	if err != nil {
+		panic(err)
 	}
-	dc.SavePNG("out.png")
+	dc.DrawImageAnchored(im, S/2, S/2, 0.5, 0.5)
+
+	err = dc.SavePNG(*fname)
+	if err != nil {
+		log.Fatalf("could not save to file: %+v", err)
+	}
 }

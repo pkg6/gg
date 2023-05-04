@@ -2,23 +2,30 @@
 // Use of this source code is governed by a MIT-style
 // license that can be found in the LICENSE file.
 
-//go:build ignore
+//go:build example
 
 package main
 
 import (
+	"flag"
+	"log"
 	"math"
 
 	"git.sr.ht/~sbinet/gg"
 )
 
 func main() {
-	im1, err := gg.LoadPNG("examples/baboon.png")
+	var (
+		fname = flag.String("o", "concat.png", "output file")
+	)
+	flag.Parse()
+
+	im1, err := gg.LoadPNG("testdata/baboon.png")
 	if err != nil {
 		panic(err)
 	}
 
-	im2, err := gg.LoadPNG("examples/gopher.png")
+	im2, err := gg.LoadPNG("testdata/gopher.png")
 	if err != nil {
 		panic(err)
 	}
@@ -32,5 +39,9 @@ func main() {
 	dc := gg.NewContext(width, height)
 	dc.DrawImage(im1, 0, 0)
 	dc.DrawImage(im2, 0, s1.Y)
-	dc.SavePNG("out.png")
+
+	err = dc.SavePNG(*fname)
+	if err != nil {
+		log.Fatalf("could not save to file: %+v", err)
+	}
 }

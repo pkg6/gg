@@ -19,6 +19,8 @@ tasks:
  - test_linux: |
      cd gg
      go test -race ./...
+     cd examples
+     go test -race ./...
  - test_windows: |
      cd gg
      GOOS=windows \

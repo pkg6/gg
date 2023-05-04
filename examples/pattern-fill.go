@@ -2,14 +2,24 @@
 // Use of this source code is governed by a MIT-style
 // license that can be found in the LICENSE file.
 
-//go:build ignore
+//go:build example
 
 package main
 
-import "git.sr.ht/~sbinet/gg"
+import (
+	"flag"
+	"log"
+
+	"git.sr.ht/~sbinet/gg"
+)
 
 func main() {
-	im, err := gg.LoadPNG("examples/baboon.png")
+	var (
+		fname = flag.String("o", "pattern-fill.png", "output file")
+	)
+	flag.Parse()
+
+	im, err := gg.LoadPNG("testdata/baboon.png")
 	if err != nil {
 		panic(err)
 	}
@@ -22,5 +32,9 @@ func main() {
 	dc.ClosePath()
 	dc.SetFillStyle(pattern)
 	dc.Fill()
-	dc.SavePNG("out.png")
+
+	err = dc.SavePNG(*fname)
+	if err != nil {
+		log.Fatalf("could not save to file: %+v", err)
+	}
 }

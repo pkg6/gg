@@ -2,15 +2,23 @@
 // Use of this source code is governed by a MIT-style
 // license that can be found in the LICENSE file.
 
-//go:build ignore
+//go:build example
 
 package main
 
 import (
+	"flag"
+	"log"
+
 	"git.sr.ht/~sbinet/gg"
 )
 
 func main() {
+	var (
+		fname = flag.String("o", "crisp.png", "output file")
+	)
+	flag.Parse()
+
 	const W = 1000
 	const H = 1000
 	const Minor = 10
@@ -46,5 +54,8 @@ func main() {
 	dc.SetRGBA(0, 0, 0, 0.5)
 	dc.Stroke()
 
-	dc.SavePNG("out.png")
+	err := dc.SavePNG(*fname)
+	if err != nil {
+		log.Fatalf("could not save to file: %+v", err)
+	}
 }

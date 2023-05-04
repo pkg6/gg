@@ -2,11 +2,13 @@
 // Use of this source code is governed by a MIT-style
 // license that can be found in the LICENSE file.
 
-//go:build ignore
+//go:build example
 
 package main
 
 import (
+	"flag"
+	"log"
 	"math"
 	"math/rand"
 
@@ -14,13 +16,21 @@ import (
 )
 
 func main() {
-	dc := gg.NewContext(1000, 1000)
+	var (
+		fname = flag.String("o", "openfill.png", "output file")
+	)
+	flag.Parse()
+
+	var (
+		rnd = rand.New(rand.NewSource(1234))
+		dc  = gg.NewContext(1000, 1000)
+	)
 	for j := 0; j < 10; j++ {
 		for i := 0; i < 10; i++ {
 			x := float64(i)*100 + 50
 			y := float64(j)*100 + 50
-			a1 := rand.Float64() * 2 * math.Pi
-			a2 := a1 + rand.Float64()*math.Pi + math.Pi/2
+			a1 := rnd.Float64() * 2 * math.Pi
+			a2 := a1 + rnd.Float64()*math.Pi + math.Pi/2
 			dc.DrawArc(x, y, 40, a1, a2)
 			// dc.ClosePath()
 		}
@@ -33,5 +43,9 @@ func main() {
 	dc.SetRGB(1, 0, 0)
 	dc.SetLineWidth(4)
 	dc.StrokePreserve()
-	dc.SavePNG("out.png")
+
+	err := dc.SavePNG(*fname)
+	if err != nil {
+		log.Fatalf("could not save to file: %+v", err)
+	}
 }

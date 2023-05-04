@@ -2,17 +2,24 @@
 // Use of this source code is governed by a MIT-style
 // license that can be found in the LICENSE file.
 
-//go:build ignore
+//go:build example
 
 package main
 
 import (
+	"flag"
+	"log"
 	"math"
 
 	"git.sr.ht/~sbinet/gg"
 )
 
 func main() {
+	var (
+		fname = flag.String("o", "sine.png", "output file")
+	)
+	flag.Parse()
+
 	const W = 1200
 	const H = 60
 	dc := gg.NewContext(W, H)
@@ -31,5 +38,9 @@ func main() {
 	dc.SetHexColor("#19344180")
 	dc.SetLineWidth(8)
 	dc.Stroke()
-	dc.SavePNG("out.png")
+
+	err := dc.SavePNG(*fname)
+	if err != nil {
+		log.Fatalf("could not save to file: %+v", err)
+	}
 }

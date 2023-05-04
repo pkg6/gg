@@ -2,13 +2,24 @@
 // Use of this source code is governed by a MIT-style
 // license that can be found in the LICENSE file.
 
-//go:build ignore
+//go:build example
 
 package main
 
-import "git.sr.ht/~sbinet/gg"
+import (
+	"flag"
+	"log"
+
+	"git.sr.ht/~sbinet/gg"
+	"github.com/go-fonts/liberation/liberationsansregular"
+)
 
 func main() {
+	var (
+		fname = flag.String("o", "quadratic.png", "output file")
+	)
+	flag.Parse()
+
 	const S = 1000
 	dc := gg.NewContext(S, S)
 	dc.SetRGB(1, 1, 1)
@@ -52,9 +63,17 @@ func main() {
 	dc.SetLineWidth(4)
 	dc.Stroke()
 
-	dc.LoadFontFace("/Library/Fonts/Arial.ttf", 200)
-	dc.DrawStringAnchored("g", -5, 5, 0.5, 0.5)
-	dc.DrawStringAnchored("G", 5, -5, 0.5, 0.5)
+	dc.Scale(1/40., 1/40.)
+	err := dc.LoadFontFaceFromBytes(liberationsansregular.TTF, 200)
+	if err != nil {
+		log.Fatalf("could not load font: %+v", err)
+	}
 
-	dc.SavePNG("out.png")
+	dc.DrawStringAnchored("g", -200, +200, 0.5, 0.5)
+	dc.DrawStringAnchored("G", +200, -200, 0.5, 0.5)
+
+	err = dc.SavePNG(*fname)
+	if err != nil {
+		log.Fatalf("could not save to file: %+v", err)
+	}
 }

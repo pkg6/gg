@@ -2,13 +2,23 @@
 // Use of this source code is governed by a MIT-style
 // license that can be found in the LICENSE file.
 
-//go:build ignore
+//go:build example
 
 package main
 
-import "git.sr.ht/~sbinet/gg"
+import (
+	"flag"
+	"log"
+
+	"git.sr.ht/~sbinet/gg"
+)
 
 func main() {
+	var (
+		fname = flag.String("o", "linewidth.png", "output file")
+	)
+	flag.Parse()
+
 	dc := gg.NewContext(1000, 1000)
 	dc.SetRGB(1, 1, 1)
 	dc.Clear()
@@ -21,5 +31,9 @@ func main() {
 		dc.Stroke()
 		w += 0.1
 	}
-	dc.SavePNG("out.png")
+
+	err := dc.SavePNG(*fname)
+	if err != nil {
+		log.Fatalf("could not save to file: %+v", err)
+	}
 }

@@ -2,18 +2,33 @@
 // Use of this source code is governed by a MIT-style
 // license that can be found in the LICENSE file.
 
-//go:build ignore
+//go:build example
 
 package main
 
-import "git.sr.ht/~sbinet/gg"
+import (
+	"flag"
+	"log"
+
+	"git.sr.ht/~sbinet/gg"
+	"github.com/go-fonts/liberation/liberationsansbold"
+	"github.com/go-fonts/liberation/liberationsansregular"
+)
 
 const TEXT = "Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world. It is a way I have of driving off the spleen and regulating the circulation. Whenever I find myself growing grim about the mouth; whenever it is a damp, drizzly November in my soul; whenever I find myself involuntarily pausing before coffin warehouses, and bringing up the rear of every funeral I meet; and especially whenever my hypos get such an upper hand of me, that it requires a strong moral principle to prevent me from deliberately stepping into the street, and methodically knocking people's hats off—then, I account it high time to get to sea as soon as I can. This is my substitute for pistol and ball. With a philosophical flourish Cato throws himself upon his sword; I quietly take to the ship. There is nothing surprising in this. If they but knew it, almost all men in their degree, some time or other, cherish very nearly the same feelings towards the ocean with me."
 
 func main() {
-	const W = 1024
-	const H = 1024
-	const P = 16
+	var (
+		fname = flag.String("o", "wrap.png", "output file")
+	)
+	flag.Parse()
+
+	const (
+		W = 1024
+		H = 1024
+		P = 16
+	)
+
 	dc := gg.NewContext(W, H)
 	dc.SetRGB(1, 1, 1)
 	dc.Clear()
@@ -24,8 +39,10 @@ func main() {
 	dc.SetLineWidth(3)
 	dc.Stroke()
 	dc.SetRGB(0, 0, 0)
-	if err := dc.LoadFontFace("/Library/Fonts/Arial Bold.ttf", 18); err != nil {
-		panic(err)
+
+	err := dc.LoadFontFaceFromBytes(liberationsansbold.TTF, 18)
+	if err != nil {
+		log.Fatalf("could not load bold font: %+v", err)
 	}
 	dc.DrawStringWrapped("UPPER LEFT", P, P, 0, 0, 0, 1.5, gg.AlignLeft)
 	dc.DrawStringWrapped("UPPER RIGHT", W-P, P, 1, 0, 0, 1.5, gg.AlignRight)
@@ -35,12 +52,18 @@ func main() {
 	dc.DrawStringWrapped("LOWER MIDDLE", W/2, H-P, 0.5, 1, 0, 1.5, gg.AlignCenter)
 	dc.DrawStringWrapped("LEFT MIDDLE", P, H/2, 0, 0.5, 0, 1.5, gg.AlignLeft)
 	dc.DrawStringWrapped("RIGHT MIDDLE", W-P, H/2, 1, 0.5, 0, 1.5, gg.AlignRight)
-	if err := dc.LoadFontFace("/Library/Fonts/Arial.ttf", 12); err != nil {
-		panic(err)
+
+	err = dc.LoadFontFaceFromBytes(liberationsansregular.TTF, 12)
+	if err != nil {
+		log.Fatalf("could not load font: %+v", err)
 	}
 	dc.DrawStringWrapped(TEXT, W/2-P, H/2-P, 1, 1, W/3, 1.75, gg.AlignLeft)
 	dc.DrawStringWrapped(TEXT, W/2+P, H/2-P, 0, 1, W/3, 2, gg.AlignLeft)
 	dc.DrawStringWrapped(TEXT, W/2-P, H/2+P, 1, 0, W/3, 2.25, gg.AlignLeft)
 	dc.DrawStringWrapped(TEXT, W/2+P, H/2+P, 0, 0, W/3, 2.5, gg.AlignLeft)
-	dc.SavePNG("out.png")
+
+	err = dc.SavePNG(*fname)
+	if err != nil {
+		log.Fatalf("could not save to file: %+v", err)
+	}
 }

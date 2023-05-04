@@ -2,27 +2,26 @@
 // Use of this source code is governed by a MIT-style
 // license that can be found in the LICENSE file.
 
-//go:build ignore
+//go:build example
 
 package main
 
 import (
+	"flag"
+	"log"
 	"math/rand"
 
 	"git.sr.ht/~sbinet/gg"
+	"github.com/go-fonts/liberation/liberationsansbold"
+	"github.com/go-fonts/liberation/liberationsansregular"
 )
 
-func CreatePoints(n int) []gg.Point {
-	points := make([]gg.Point, n)
-	for i := 0; i < n; i++ {
-		x := 0.5 + rand.NormFloat64()*0.1
-		y := x + rand.NormFloat64()*0.1
-		points[i] = gg.Point{x, y}
-	}
-	return points
-}
-
 func main() {
+	var (
+		fname = flag.String("o", "scatter.png", "output file")
+	)
+	flag.Parse()
+
 	const S = 1024
 	const P = 64
 	dc := gg.NewContext(S, S)
@@ -60,13 +59,34 @@ func main() {
 	// draw text
 	dc.Identity()
 	dc.SetRGB(0, 0, 0)
-	if err := dc.LoadFontFace("/Library/Fonts/Arial Bold.ttf", 24); err != nil {
-		panic(err)
+
+	err := dc.LoadFontFaceFromBytes(liberationsansbold.TTF, 24)
+	if err != nil {
+		log.Fatalf("could not load font: %+v", err)
 	}
 	dc.DrawStringAnchored("Chart Title", S/2, P/2, 0.5, 0.5)
-	if err := dc.LoadFontFace("/Library/Fonts/Arial.ttf", 18); err != nil {
-		panic(err)
+
+	err = dc.LoadFontFaceFromBytes(liberationsansregular.TTF, 18)
+	if err != nil {
+		log.Fatalf("could not load font: %+v", err)
 	}
 	dc.DrawStringAnchored("X Axis Title", S/2, S-P/2, 0.5, 0.5)
-	dc.SavePNG("out.png")
+
+	err = dc.SavePNG(*fname)
+	if err != nil {
+		log.Fatalf("could not save to file: %+v", err)
+	}
+}
+
+func CreatePoints(n int) []gg.Point {
+	var (
+		rnd = rand.New(rand.NewSource(1234))
+		pts = make([]gg.Point, n)
+	)
+	for i := 0; i < n; i++ {
+		x := 0.5 + rnd.NormFloat64()*0.1
+		y := x + rnd.NormFloat64()*0.1
+		pts[i] = gg.Point{x, y}
+	}
+	return pts
 }

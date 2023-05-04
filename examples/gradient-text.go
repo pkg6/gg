@@ -2,14 +2,17 @@
 // Use of this source code is governed by a MIT-style
 // license that can be found in the LICENSE file.
 
-//go:build ignore
+//go:build example
 
 package main
 
 import (
+	"flag"
 	"image/color"
+	"log"
 
 	"git.sr.ht/~sbinet/gg"
+	"github.com/go-fonts/anton/antonregular"
 )
 
 const (
@@ -18,11 +21,20 @@ const (
 )
 
 func main() {
+	var (
+		fname = flag.String("o", "gradient-text.png", "output file")
+	)
+	flag.Parse()
+
 	dc := gg.NewContext(W, H)
 
 	// draw text
 	dc.SetRGB(0, 0, 0)
-	dc.LoadFontFace("/Library/Fonts/Impact.ttf", 128)
+
+	err := dc.LoadFontFaceFromBytes(antonregular.TTF, 128)
+	if err != nil {
+		log.Fatalf("could not load bold font: %+v", err)
+	}
 	dc.DrawStringAnchored("Gradient Text", W/2, H/2, 0.5, 0.5)
 
 	// get the context as an alpha mask
@@ -43,5 +55,8 @@ func main() {
 	dc.DrawRectangle(0, 0, W, H)
 	dc.Fill()
 
-	dc.SavePNG("out.png")
+	err = dc.SavePNG(*fname)
+	if err != nil {
+		log.Fatalf("could not save to file: %+v", err)
+	}
 }

@@ -2,18 +2,24 @@
 // Use of this source code is governed by a MIT-style
 // license that can be found in the LICENSE file.
 
-//go:build ignore
+//go:build example
 
 package main
 
 import (
+	"flag"
 	"log"
 
 	"git.sr.ht/~sbinet/gg"
 )
 
 func main() {
-	im, err := gg.LoadImage("examples/baboon.png")
+	var (
+		fname = flag.String("o", "mask.png", "output file")
+	)
+	flag.Parse()
+
+	im, err := gg.LoadImage("testdata/baboon.png")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -22,5 +28,9 @@ func main() {
 	dc.DrawRoundedRectangle(0, 0, 512, 512, 64)
 	dc.Clip()
 	dc.DrawImage(im, 0, 0)
-	dc.SavePNG("out.png")
+
+	err = dc.SavePNG(*fname)
+	if err != nil {
+		log.Fatalf("could not save to file: %+v", err)
+	}
 }

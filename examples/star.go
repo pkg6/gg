@@ -2,11 +2,13 @@
 // Use of this source code is governed by a MIT-style
 // license that can be found in the LICENSE file.
 
-//go:build ignore
+//go:build example
 
 package main
 
 import (
+	"flag"
+	"log"
 	"math"
 
 	"git.sr.ht/~sbinet/gg"
@@ -26,6 +28,11 @@ func Polygon(n int, x, y, r float64) []Point {
 }
 
 func main() {
+	var (
+		fname = flag.String("o", "star.png", "output file")
+	)
+	flag.Parse()
+
 	n := 5
 	points := Polygon(n, 512, 512, 400)
 	dc := gg.NewContext(1024, 1024)
@@ -42,5 +49,9 @@ func main() {
 	dc.SetRGBA(0, 1, 0, 0.5)
 	dc.SetLineWidth(16)
 	dc.Stroke()
-	dc.SavePNG("out.png")
+
+	err := dc.SavePNG(*fname)
+	if err != nil {
+		log.Fatalf("could not save to file: %+v", err)
+	}
 }

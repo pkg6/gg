@@ -2,17 +2,24 @@
 // Use of this source code is governed by a MIT-style
 // license that can be found in the LICENSE file.
 
-//go:build ignore
+//go:build example
 
 package main
 
 import (
+	"flag"
+	"log"
 	"math"
 
 	"git.sr.ht/~sbinet/gg"
 )
 
 func main() {
+	var (
+		fname = flag.String("o", "spiral.png", "output file")
+	)
+	flag.Parse()
+
 	const S = 1024
 	const N = 2048
 	dc := gg.NewContext(S, S)
@@ -29,5 +36,9 @@ func main() {
 		dc.DrawCircle(x, y, r)
 	}
 	dc.Fill()
-	dc.SavePNG("out.png")
+
+	err := dc.SavePNG(*fname)
+	if err != nil {
+		log.Fatalf("could not save to file: %+v", err)
+	}
 }
