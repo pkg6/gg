@@ -10,8 +10,10 @@ import (
 	"image/draw"
 	"image/jpeg"
 	"image/png"
+	"io/fs"
 	"math"
 	"os"
+	"path/filepath"
 	"strings"
 
 	"github.com/golang/freetype/truetype"
@@ -136,7 +138,49 @@ func LoadFontFace(path string, points float64) (font.Face, error) {
 	if err != nil {
 		return nil, err
 	}
-	f, err := truetype.Parse(fontBytes)
+	return LoadFontFaceFromBytes(fontBytes, points)
+}
+
+// LoadFontFaceFromFS is a helper function to load the specified font file from
+// the provided filesystem and path, with the specified point size.
+//
+// Note that the returned `font.Face` objects are not thread safe and
+// cannot be used in parallel across goroutines.
+// You can usually just use the Context.LoadFontFace function instead of
+// this package-level function.
+func LoadFontFaceFromFS(fsys fs.FS, path string, points float64) (font.Face, error) {
+	if fsys == nil {
+		switch {
+		case filepath.IsAbs(path):
+			var (
+				err  error
+				orig = path
+				root = filepath.FromSlash("/")
+			)
+			path, err = filepath.Rel(root, path)
+			if err != nil {
+				return nil, fmt.Errorf("could not find relative path for %q from %q: %w", orig, root, err)
+			}
+			fsys = os.DirFS(root)
+		default:
+			fsys = os.DirFS(".")
+		}
+	}
+	fontBytes, err := fs.ReadFile(fsys, path)
+	if err != nil {
+		return nil, err
+	}
+
+	return LoadFontFaceFromBytes(fontBytes, points)
+}
+
+// LoadFontFace is a helper function to load the specified font with
+// the specified point size. Note that the returned `font.Face` objects
+// are not thread safe and cannot be used in parallel across goroutines.
+// You can usually just use the Context.LoadFontFace function instead of
+// this package-level function.
+func LoadFontFaceFromBytes(raw []byte, points float64) (font.Face, error) {
+	f, err := truetype.Parse(raw)
 	if err != nil {
 		return nil, err
 	}
