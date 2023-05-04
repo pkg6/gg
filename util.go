@@ -9,7 +9,6 @@ import (
 	"image"
 	"image/draw"
 	"image/jpeg"
-	_ "image/jpeg"
 	"image/png"
 	"math"
 	"os"
