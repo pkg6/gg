@@ -10,6 +10,8 @@ import (
 	"testing"
 
 	"git.sr.ht/~sbinet/cmpimg"
+	"golang.org/x/image/font/gofont/goregular"
+	"golang.org/x/image/font/opentype"
 )
 
 func saveImage(dc *Context, name string) error {
@@ -213,6 +215,35 @@ func TestDrawStringWrapped(t *testing.T) {
 			dc.DrawStringWrapped("Hello, world! How are you?", 50, 50, 0.5, 0.5, 90, 1.5, AlignCenter)
 			saveImage(dc, "testdata/draw_string_wrapped.png")
 		}, t, "draw_string_wrapped.png",
+	)
+}
+
+func TestDrawStringGoFont(t *testing.T) {
+	chkimg(
+		func() {
+			font, err := opentype.Parse(goregular.TTF)
+			if err != nil {
+				t.Fatalf("could not parse Gofont: %+v", err)
+			}
+
+			face, err := opentype.NewFace(font, &opentype.FaceOptions{
+				Size: 12,
+				DPI:  72,
+			})
+			if err != nil {
+				t.Fatalf("could not create face for Gofont: %+v", err)
+			}
+			defer face.Close()
+
+			dc := NewContext(200, 200)
+			dc.SetRGB(1, 1, 1)
+			dc.Clear()
+			dc.SetColor(color.Black)
+			dc.SetFontFace(face)
+			dc.DrawStringAnchored("Hello, world!", 100, 100, 0.5, 0.5)
+
+			saveImage(dc, "testdata/draw_string_gofont.png")
+		}, t, "draw_string_gofont.png",
 	)
 }
 

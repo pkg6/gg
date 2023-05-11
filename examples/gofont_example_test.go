@@ -10,17 +10,24 @@ import (
 
 	"git.sr.ht/~sbinet/cmpimg"
 	"git.sr.ht/~sbinet/gg"
-	"github.com/golang/freetype/truetype"
 	"golang.org/x/image/font/gofont/goregular"
+	"golang.org/x/image/font/opentype"
 )
 
 func ExampleGofont() {
-	font, err := truetype.Parse(goregular.TTF)
+	font, err := opentype.Parse(goregular.TTF)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	face := truetype.NewFace(font, &truetype.Options{Size: 48})
+	face, err := opentype.NewFace(font, &opentype.FaceOptions{
+		Size: 48,
+		DPI:  72,
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer face.Close()
 
 	dc := gg.NewContext(1024, 1024)
 	dc.SetFontFace(face)

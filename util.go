@@ -16,9 +16,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/golang/freetype/truetype"
-
 	"golang.org/x/image/font"
+	"golang.org/x/image/font/opentype"
 	"golang.org/x/image/math/fixed"
 )
 
@@ -191,13 +190,14 @@ func LoadFontFaceFromFS(fsys fs.FS, path string, points float64) (font.Face, err
 // You can usually just use the Context.LoadFontFace function instead of
 // this package-level function.
 func LoadFontFaceFromBytes(raw []byte, points float64) (font.Face, error) {
-	f, err := truetype.Parse(raw)
+	f, err := opentype.Parse(raw)
 	if err != nil {
 		return nil, err
 	}
-	face := truetype.NewFace(f, &truetype.Options{
+	face, err := opentype.NewFace(f, &opentype.FaceOptions{
 		Size: points,
+		DPI:  72,
 		// Hinting: font.HintingFull,
 	})
-	return face, nil
+	return face, err
 }

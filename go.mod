@@ -11,5 +11,6 @@ require (
 
 require (
 	github.com/pmezard/go-difflib v1.0.0 // indirect
+	golang.org/x/text v0.9.0 // indirect
 	rsc.io/pdf v0.1.1 // indirect
 )
