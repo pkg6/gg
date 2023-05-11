@@ -55,7 +55,13 @@ func SavePNG(path string, im image.Image) error {
 		return err
 	}
 	defer file.Close()
-	return png.Encode(file, im)
+
+	err = png.Encode(file, im)
+	if err != nil {
+		return fmt.Errorf("could not encode PNG to %q: %w", path, err)
+	}
+
+	return file.Close()
 }
 
 func LoadJPG(path string) (image.Image, error) {
@@ -77,7 +83,12 @@ func SaveJPG(path string, im image.Image, quality int) error {
 	var opt jpeg.Options
 	opt.Quality = quality
 
-	return jpeg.Encode(file, im, &opt)
+	err = jpeg.Encode(file, im, &opt)
+	if err != nil {
+		return fmt.Errorf("could not encode JPG to %q: %w", path, err)
+	}
+
+	return file.Close()
 }
 
 func imageToRGBA(src image.Image) *image.RGBA {
