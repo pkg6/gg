@@ -9,7 +9,6 @@ import (
 	"math/rand"
 	"testing"
 
-	"git.sr.ht/~sbinet/cmpimg"
 	"git.sr.ht/~sbinet/gg"
 )
 
@@ -101,5 +100,5 @@ func ExampleBezier() {
 }
 
 func TestBeziers(t *testing.T) {
-	cmpimg.CheckPlot(ExampleBezier, t, "beziers.png")
+	chkimg(ExampleBezier, t, "beziers.png")
 }

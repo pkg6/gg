@@ -9,7 +9,6 @@ import (
 	"math"
 	"testing"
 
-	"git.sr.ht/~sbinet/cmpimg"
 	"git.sr.ht/~sbinet/gg"
 )
 
@@ -43,5 +42,5 @@ func ExampleConcat() {
 }
 
 func TestConcat(t *testing.T) {
-	cmpimg.CheckPlot(ExampleConcat, t, "concat.png")
+	chkimg(ExampleConcat, t, "concat.png")
 }

@@ -8,7 +8,6 @@ import (
 	"log"
 	"testing"
 
-	"git.sr.ht/~sbinet/cmpimg"
 	"git.sr.ht/~sbinet/gg"
 )
 
@@ -36,5 +35,5 @@ func ExamplePatternFill() {
 }
 
 func TestPatternFill(t *testing.T) {
-	cmpimg.CheckPlot(ExamplePatternFill, t, "pattern-fill.png")
+	chkimg(ExamplePatternFill, t, "pattern-fill.png")
 }

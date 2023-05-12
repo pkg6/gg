@@ -8,7 +8,6 @@ import (
 	"log"
 	"testing"
 
-	"git.sr.ht/~sbinet/cmpimg"
 	"git.sr.ht/~sbinet/gg"
 )
 
@@ -39,5 +38,5 @@ func ExampleEllipse() {
 }
 
 func TestEllipse(t *testing.T) {
-	cmpimg.CheckPlot(ExampleEllipse, t, "ellipse.png")
+	chkimg(ExampleEllipse, t, "ellipse.png")
 }

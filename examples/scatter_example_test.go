@@ -9,7 +9,6 @@ import (
 	"math/rand"
 	"testing"
 
-	"git.sr.ht/~sbinet/cmpimg"
 	"git.sr.ht/~sbinet/gg"
 	"github.com/go-fonts/liberation/liberationsansbold"
 	"github.com/go-fonts/liberation/liberationsansregular"
@@ -88,5 +87,5 @@ func CreatePoints(n int) []gg.Point {
 }
 
 func TestScatter(t *testing.T) {
-	cmpimg.CheckPlot(ExampleScatter, t, "scatter.png")
+	chkimg(ExampleScatter, t, "scatter.png")
 }

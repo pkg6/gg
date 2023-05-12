@@ -8,7 +8,6 @@ import (
 	"log"
 	"testing"
 
-	"git.sr.ht/~sbinet/cmpimg"
 	"git.sr.ht/~sbinet/gg"
 )
 
@@ -57,5 +56,5 @@ func ExampleCrisp() {
 }
 
 func TestCrisp(t *testing.T) {
-	cmpimg.CheckPlot(ExampleCrisp, t, "crisp.png")
+	chkimg(ExampleCrisp, t, "crisp.png")
 }

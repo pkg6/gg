@@ -9,7 +9,6 @@ import (
 	"log"
 	"testing"
 
-	"git.sr.ht/~sbinet/cmpimg"
 	"git.sr.ht/~sbinet/gg"
 )
 
@@ -39,5 +38,5 @@ func ExampleGradientRadial() {
 }
 
 func TestGradientRadial(t *testing.T) {
-	cmpimg.CheckPlot(ExampleGradientRadial, t, "gradient-radial.png")
+	chkimg(ExampleGradientRadial, t, "gradient-radial.png")
 }

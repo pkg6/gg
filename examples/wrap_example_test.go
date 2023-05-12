@@ -8,7 +8,6 @@ import (
 	"log"
 	"testing"
 
-	"git.sr.ht/~sbinet/cmpimg"
 	"git.sr.ht/~sbinet/gg"
 	"github.com/go-fonts/liberation/liberationsansbold"
 	"github.com/go-fonts/liberation/liberationsansregular"
@@ -65,5 +64,5 @@ func ExampleWrap() {
 }
 
 func TestWrap(t *testing.T) {
-	cmpimg.CheckPlot(ExampleWrap, t, "wrap.png")
+	chkimg(ExampleWrap, t, "wrap.png")
 }

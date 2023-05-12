@@ -8,7 +8,6 @@ import (
 	"log"
 	"testing"
 
-	"git.sr.ht/~sbinet/cmpimg"
 	"git.sr.ht/~sbinet/gg"
 )
 
@@ -39,5 +38,5 @@ func ExampleTiling() {
 }
 
 func TestTiling(t *testing.T) {
-	cmpimg.CheckPlot(ExampleTiling, t, "tiling.png")
+	chkimg(ExampleTiling, t, "tiling.png")
 }

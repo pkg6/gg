@@ -10,7 +10,6 @@ import (
 	"math/rand"
 	"testing"
 
-	"git.sr.ht/~sbinet/cmpimg"
 	"git.sr.ht/~sbinet/gg"
 )
 
@@ -47,5 +46,5 @@ func ExampleOpenfill() {
 }
 
 func TestOpenfill(t *testing.T) {
-	cmpimg.CheckPlot(ExampleOpenfill, t, "openfill.png")
+	chkimg(ExampleOpenfill, t, "openfill.png")
 }

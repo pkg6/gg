@@ -8,7 +8,6 @@ import (
 	"log"
 	"testing"
 
-	"git.sr.ht/~sbinet/cmpimg"
 	"git.sr.ht/~sbinet/gg"
 	"github.com/go-fonts/anton/antonregular"
 )
@@ -49,5 +48,5 @@ func ExampleMeme() {
 }
 
 func TestMeme(t *testing.T) {
-	cmpimg.CheckPlot(ExampleMeme, t, "meme.png")
+	chkimg(ExampleMeme, t, "meme.png")
 }

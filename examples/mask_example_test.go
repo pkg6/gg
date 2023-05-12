@@ -8,7 +8,6 @@ import (
 	"log"
 	"testing"
 
-	"git.sr.ht/~sbinet/cmpimg"
 	"git.sr.ht/~sbinet/gg"
 )
 
@@ -32,5 +31,5 @@ func ExampleMask() {
 }
 
 func TestMask(t *testing.T) {
-	cmpimg.CheckPlot(ExampleMask, t, "mask.png")
+	chkimg(ExampleMask, t, "mask.png")
 }

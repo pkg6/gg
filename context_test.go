@@ -7,6 +7,8 @@ package gg
 import (
 	"image/color"
 	"math/rand"
+	"os"
+	"path/filepath"
 	"testing"
 
 	"git.sr.ht/~sbinet/cmpimg"
@@ -18,8 +20,16 @@ func saveImage(dc *Context, name string) error {
 	return SavePNG(name, dc.Image())
 }
 
+func chkimg(fn func(), t *testing.T, fname string) {
+	t.Helper()
+	cmpimg.CheckPlot(fn, t, fname)
+	if !t.Failed() {
+		_ = os.Remove(filepath.Join("testdata", fname))
+	}
+}
+
 func TestBlank(t *testing.T) {
-	cmpimg.CheckPlot(
+	chkimg(
 		func() {
 			dc := NewContext(100, 100)
 			saveImage(dc, "testdata/blank.png")
@@ -28,7 +38,7 @@ func TestBlank(t *testing.T) {
 }
 
 func TestGrid(t *testing.T) {
-	cmpimg.CheckPlot(
+	chkimg(
 		func() {
 			dc := NewContext(100, 100)
 			dc.SetRGB(1, 1, 1)
@@ -46,7 +56,7 @@ func TestGrid(t *testing.T) {
 }
 
 func TestLines(t *testing.T) {
-	cmpimg.CheckPlot(
+	chkimg(
 		func() {
 			dc := NewContext(100, 100)
 			dc.SetRGB(0.5, 0.5, 0.5)
@@ -68,7 +78,7 @@ func TestLines(t *testing.T) {
 }
 
 func TestCircles(t *testing.T) {
-	cmpimg.CheckPlot(
+	chkimg(
 		func() {
 			dc := NewContext(100, 100)
 			dc.SetRGB(1, 1, 1)
@@ -91,7 +101,7 @@ func TestCircles(t *testing.T) {
 }
 
 func TestQuadratic(t *testing.T) {
-	cmpimg.CheckPlot(
+	chkimg(
 		func() {
 			dc := NewContext(100, 100)
 			dc.SetRGB(0.25, 0.25, 0.25)
@@ -116,7 +126,7 @@ func TestQuadratic(t *testing.T) {
 }
 
 func TestCubic(t *testing.T) {
-	cmpimg.CheckPlot(
+	chkimg(
 		func() {
 			dc := NewContext(100, 100)
 			dc.SetRGB(0.75, 0.75, 0.75)
@@ -143,7 +153,7 @@ func TestCubic(t *testing.T) {
 }
 
 func TestFill(t *testing.T) {
-	cmpimg.CheckPlot(
+	chkimg(
 		func() {
 			dc := NewContext(100, 100)
 			dc.SetRGB(1, 1, 1)
@@ -166,7 +176,7 @@ func TestFill(t *testing.T) {
 }
 
 func TestClip(t *testing.T) {
-	cmpimg.CheckPlot(
+	chkimg(
 		func() {
 			dc := NewContext(100, 100)
 			dc.SetRGB(1, 1, 1)
@@ -188,7 +198,7 @@ func TestClip(t *testing.T) {
 }
 
 func TestPushPop(t *testing.T) {
-	cmpimg.CheckPlot(
+	chkimg(
 		func() {
 			const S = 100
 			dc := NewContext(S, S)
@@ -206,7 +216,7 @@ func TestPushPop(t *testing.T) {
 }
 
 func TestDrawStringWrapped(t *testing.T) {
-	cmpimg.CheckPlot(
+	chkimg(
 		func() {
 			dc := NewContext(100, 100)
 			dc.SetRGB(1, 1, 1)
@@ -248,7 +258,7 @@ func TestDrawStringGoFont(t *testing.T) {
 }
 
 func TestDrawImage(t *testing.T) {
-	cmpimg.CheckPlot(
+	chkimg(
 		func() {
 			src := NewContext(100, 100)
 			src.SetRGB(1, 1, 1)
@@ -271,7 +281,7 @@ func TestDrawImage(t *testing.T) {
 }
 
 func TestSetPixel(t *testing.T) {
-	cmpimg.CheckPlot(
+	chkimg(
 		func() {
 			dc := NewContext(100, 100)
 			dc.SetRGB(0, 0, 0)
@@ -292,7 +302,7 @@ func TestSetPixel(t *testing.T) {
 }
 
 func TestDrawPoint(t *testing.T) {
-	cmpimg.CheckPlot(
+	chkimg(
 		func() {
 			dc := NewContext(100, 100)
 			dc.SetRGB(0, 0, 0)
@@ -311,7 +321,7 @@ func TestDrawPoint(t *testing.T) {
 }
 
 func TestLinearGradient(t *testing.T) {
-	cmpimg.CheckPlot(
+	chkimg(
 		func() {
 			dc := NewContext(100, 100)
 			g := NewLinearGradient(0, 0, 100, 100)
@@ -327,7 +337,7 @@ func TestLinearGradient(t *testing.T) {
 }
 
 func TestRadialGradient(t *testing.T) {
-	cmpimg.CheckPlot(
+	chkimg(
 		func() {
 			dc := NewContext(100, 100)
 			g := NewRadialGradient(30, 50, 0, 70, 50, 50)
@@ -343,7 +353,7 @@ func TestRadialGradient(t *testing.T) {
 }
 
 func TestDashes(t *testing.T) {
-	cmpimg.CheckPlot(
+	chkimg(
 		func() {
 			dc := NewContext(100, 100)
 			dc.SetRGB(1, 1, 1)
@@ -366,7 +376,7 @@ func TestDashes(t *testing.T) {
 }
 
 func TestIssue85(t *testing.T) {
-	cmpimg.CheckPlot(
+	chkimg(
 		func() {
 			// https://github.com/fogleman/gg/issues/85
 			const (

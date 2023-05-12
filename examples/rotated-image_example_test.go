@@ -8,7 +8,6 @@ import (
 	"log"
 	"testing"
 
-	"git.sr.ht/~sbinet/cmpimg"
 	"git.sr.ht/~sbinet/gg"
 )
 
@@ -50,5 +49,5 @@ func ExampleRotatedImage() {
 }
 
 func TestRotatedImage(t *testing.T) {
-	cmpimg.CheckPlot(ExampleRotatedImage, t, "rotated-image.png")
+	chkimg(ExampleRotatedImage, t, "rotated-image.png")
 }

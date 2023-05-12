@@ -8,7 +8,6 @@ import (
 	"log"
 	"testing"
 
-	"git.sr.ht/~sbinet/cmpimg"
 	"git.sr.ht/~sbinet/gg"
 	"golang.org/x/image/font/gofont/goregular"
 	"golang.org/x/image/font/opentype"
@@ -52,5 +51,5 @@ func ExampleRotatedText() {
 }
 
 func TestRotatedText(t *testing.T) {
-	cmpimg.CheckPlot(ExampleRotatedText, t, "rotated-text.png")
+	chkimg(ExampleRotatedText, t, "rotated-text.png")
 }

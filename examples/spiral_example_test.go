@@ -9,7 +9,6 @@ import (
 	"math"
 	"testing"
 
-	"git.sr.ht/~sbinet/cmpimg"
 	"git.sr.ht/~sbinet/gg"
 )
 
@@ -40,5 +39,5 @@ func ExampleSpiral() {
 }
 
 func TestSpiral(t *testing.T) {
-	cmpimg.CheckPlot(ExampleSpiral, t, "spiral.png")
+	chkimg(ExampleSpiral, t, "spiral.png")
 }

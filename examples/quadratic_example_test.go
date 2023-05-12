@@ -8,7 +8,6 @@ import (
 	"log"
 	"testing"
 
-	"git.sr.ht/~sbinet/cmpimg"
 	"git.sr.ht/~sbinet/gg"
 	"github.com/go-fonts/liberation/liberationsansregular"
 )
@@ -75,5 +74,5 @@ func ExampleQuadratic() {
 }
 
 func TestQuadratic(t *testing.T) {
-	cmpimg.CheckPlot(ExampleQuadratic, t, "quadratic.png")
+	chkimg(ExampleQuadratic, t, "quadratic.png")
 }

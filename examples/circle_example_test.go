@@ -8,7 +8,6 @@ import (
 	"log"
 	"testing"
 
-	"git.sr.ht/~sbinet/cmpimg"
 	"git.sr.ht/~sbinet/gg"
 )
 
@@ -27,5 +26,5 @@ func ExampleCircle() {
 }
 
 func TestCircle(t *testing.T) {
-	cmpimg.CheckPlot(ExampleCircle, t, "circle.png")
+	chkimg(ExampleCircle, t, "circle.png")
 }

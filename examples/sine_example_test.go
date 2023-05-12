@@ -9,7 +9,6 @@ import (
 	"math"
 	"testing"
 
-	"git.sr.ht/~sbinet/cmpimg"
 	"git.sr.ht/~sbinet/gg"
 )
 
@@ -42,5 +41,5 @@ func ExampleSine() {
 }
 
 func TestSine(t *testing.T) {
-	cmpimg.CheckPlot(ExampleSine, t, "sine.png")
+	chkimg(ExampleSine, t, "sine.png")
 }

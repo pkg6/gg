@@ -8,7 +8,6 @@ import (
 	"log"
 	"testing"
 
-	"git.sr.ht/~sbinet/cmpimg"
 	"git.sr.ht/~sbinet/gg"
 )
 
@@ -53,5 +52,5 @@ func ExampleCubic() {
 }
 
 func TestCubic(t *testing.T) {
-	cmpimg.CheckPlot(ExampleCubic, t, "cubic.png")
+	chkimg(ExampleCubic, t, "cubic.png")
 }

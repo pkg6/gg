@@ -8,7 +8,6 @@ import (
 	"log"
 	"testing"
 
-	"git.sr.ht/~sbinet/cmpimg"
 	"git.sr.ht/~sbinet/gg"
 )
 
@@ -47,5 +46,5 @@ func ExampleLorem() {
 }
 
 func TestLorem(t *testing.T) {
-	cmpimg.CheckPlot(ExampleLorem, t, "lorem.png")
+	chkimg(ExampleLorem, t, "lorem.png")
 }

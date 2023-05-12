@@ -8,7 +8,6 @@ import (
 	"log"
 	"testing"
 
-	"git.sr.ht/~sbinet/cmpimg"
 	"git.sr.ht/~sbinet/gg"
 )
 
@@ -30,5 +29,5 @@ func ExampleInvertMask() {
 }
 
 func TestInvertMask(t *testing.T) {
-	cmpimg.CheckPlot(ExampleInvertMask, t, "invert-mask.png")
+	chkimg(ExampleInvertMask, t, "invert-mask.png")
 }

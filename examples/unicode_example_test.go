@@ -8,7 +8,6 @@ import (
 	"log"
 	"testing"
 
-	"git.sr.ht/~sbinet/cmpimg"
 	"git.sr.ht/~sbinet/gg"
 	"github.com/go-fonts/xolonium/xoloniumregular"
 )
@@ -45,5 +44,5 @@ func ExampleUnicode() {
 }
 
 func TestUnicode(t *testing.T) {
-	cmpimg.CheckPlot(ExampleUnicode, t, "unicode.png")
+	chkimg(ExampleUnicode, t, "unicode.png")
 }

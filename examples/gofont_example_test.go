@@ -8,7 +8,6 @@ import (
 	"log"
 	"testing"
 
-	"git.sr.ht/~sbinet/cmpimg"
 	"git.sr.ht/~sbinet/gg"
 	"golang.org/x/image/font/gofont/goregular"
 	"golang.org/x/image/font/opentype"
@@ -45,5 +44,5 @@ func ExampleGofont() {
 }
 
 func TestGofont(t *testing.T) {
-	cmpimg.CheckPlot(ExampleGofont, t, "gofont.png")
+	chkimg(ExampleGofont, t, "gofont.png")
 }

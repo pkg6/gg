@@ -8,7 +8,6 @@ import (
 	"log"
 	"testing"
 
-	"git.sr.ht/~sbinet/cmpimg"
 	"git.sr.ht/~sbinet/gg"
 	"github.com/go-fonts/liberation/liberationsansregular"
 )
@@ -35,5 +34,5 @@ func ExampleText() {
 }
 
 func TestText(t *testing.T) {
-	cmpimg.CheckPlot(ExampleText, t, "text.png")
+	chkimg(ExampleText, t, "text.png")
 }

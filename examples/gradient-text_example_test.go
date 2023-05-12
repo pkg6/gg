@@ -9,7 +9,6 @@ import (
 	"log"
 	"testing"
 
-	"git.sr.ht/~sbinet/cmpimg"
 	"git.sr.ht/~sbinet/gg"
 	"github.com/go-fonts/anton/antonregular"
 )
@@ -58,5 +57,5 @@ func ExampleGradientText() {
 }
 
 func TestGradientText(t *testing.T) {
-	cmpimg.CheckPlot(ExampleGradientText, t, "gradient-text.png")
+	chkimg(ExampleGradientText, t, "gradient-text.png")
 }

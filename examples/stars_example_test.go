@@ -10,7 +10,6 @@ import (
 	"math/rand"
 	"testing"
 
-	"git.sr.ht/~sbinet/cmpimg"
 	"git.sr.ht/~sbinet/gg"
 )
 
@@ -63,5 +62,5 @@ func ExampleStars() {
 }
 
 func TestStars(t *testing.T) {
-	cmpimg.CheckPlot(ExampleStars, t, "stars.png")
+	chkimg(ExampleStars, t, "stars.png")
 }

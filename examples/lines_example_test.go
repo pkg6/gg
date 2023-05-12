@@ -9,7 +9,6 @@ import (
 	"math/rand"
 	"testing"
 
-	"git.sr.ht/~sbinet/cmpimg"
 	"git.sr.ht/~sbinet/gg"
 )
 
@@ -48,5 +47,5 @@ func ExampleLines() {
 }
 
 func TestLines(t *testing.T) {
-	cmpimg.CheckPlot(ExampleLines, t, "lines.png")
+	chkimg(ExampleLines, t, "lines.png")
 }

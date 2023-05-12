@@ -9,7 +9,6 @@ import (
 	"math"
 	"testing"
 
-	"git.sr.ht/~sbinet/cmpimg"
 	"git.sr.ht/~sbinet/gg"
 )
 
@@ -51,5 +50,5 @@ func ExampleStar() {
 }
 
 func TestStar(t *testing.T) {
-	cmpimg.CheckPlot(ExampleStar, t, "star.png")
+	chkimg(ExampleStar, t, "star.png")
 }

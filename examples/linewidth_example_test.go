@@ -8,7 +8,6 @@ import (
 	"log"
 	"testing"
 
-	"git.sr.ht/~sbinet/cmpimg"
 	"git.sr.ht/~sbinet/gg"
 )
 
@@ -35,5 +34,5 @@ func ExampleLinewidth() {
 }
 
 func TestLinewidth(t *testing.T) {
-	cmpimg.CheckPlot(ExampleLinewidth, t, "linewidth.png")
+	chkimg(ExampleLinewidth, t, "linewidth.png")
 }

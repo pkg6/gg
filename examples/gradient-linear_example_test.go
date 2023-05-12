@@ -9,7 +9,6 @@ import (
 	"log"
 	"testing"
 
-	"git.sr.ht/~sbinet/cmpimg"
 	"git.sr.ht/~sbinet/gg"
 )
 
@@ -51,5 +50,5 @@ func ExampleGradientLinear() {
 }
 
 func TestGradientLinear(t *testing.T) {
-	cmpimg.CheckPlot(ExampleGradientLinear, t, "gradient-linear.png")
+	chkimg(ExampleGradientLinear, t, "gradient-linear.png")
 }

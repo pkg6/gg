@@ -9,7 +9,6 @@ import (
 	"log"
 	"testing"
 
-	"git.sr.ht/~sbinet/cmpimg"
 	"git.sr.ht/~sbinet/gg"
 )
 
@@ -48,5 +47,5 @@ func ExampleGradientConic() {
 }
 
 func TestGradientConic(t *testing.T) {
-	cmpimg.CheckPlot(ExampleGradientConic, t, "gradient-conic.png")
+	chkimg(ExampleGradientConic, t, "gradient-conic.png")
 }
