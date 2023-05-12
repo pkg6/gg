@@ -105,6 +105,8 @@ MeasureMultilineString(s string, lineSpacing float64) (w, h float64)
 WordWrap(s string, w float64) []string
 SetFontFace(fontFace font.Face)
 LoadFontFace(path string, points float64) error
+LoadFontFaceFromBytes(raw []byte, points float64) error
+LoadFontFaceFromFS(fsys fs.FS, path string, points float64) error
 ```
 
 ## Color Functions
