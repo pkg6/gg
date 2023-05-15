@@ -47,8 +47,6 @@ func ExampleCubic() {
 	if err != nil {
 		log.Fatalf("could not save to file: %+v", err)
 	}
-
-	// Output:
 }
 
 func TestCubic(t *testing.T) {

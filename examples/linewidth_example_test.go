@@ -29,8 +29,6 @@ func ExampleLinewidth() {
 	if err != nil {
 		log.Fatalf("could not save to file: %+v", err)
 	}
-
-	// Output:
 }
 
 func TestLinewidth(t *testing.T) {

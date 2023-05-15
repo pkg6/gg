@@ -39,8 +39,6 @@ func ExampleUnicode() {
 	if err != nil {
 		log.Fatalf("could not save to file: %+v", err)
 	}
-
-	// Output:
 }
 
 func TestUnicode(t *testing.T) {

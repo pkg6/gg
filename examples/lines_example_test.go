@@ -42,8 +42,6 @@ func ExampleLines() {
 	if err != nil {
 		log.Fatalf("could not save to file: %+v", err)
 	}
-
-	// Output:
 }
 
 func TestLines(t *testing.T) {

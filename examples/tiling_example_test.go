@@ -33,8 +33,6 @@ func ExampleTiling() {
 	if err != nil {
 		log.Fatalf("could not save to file: %+v", err)
 	}
-
-	// Output:
 }
 
 func TestTiling(t *testing.T) {

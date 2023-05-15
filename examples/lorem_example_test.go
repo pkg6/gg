@@ -41,8 +41,6 @@ func ExampleLorem() {
 	if err != nil {
 		log.Fatalf("could not save to file: %+v", err)
 	}
-
-	// Output:
 }
 
 func TestLorem(t *testing.T) {

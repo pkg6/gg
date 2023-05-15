@@ -59,8 +59,6 @@ func ExampleWrap() {
 	if err != nil {
 		log.Fatalf("could not save to file: %+v", err)
 	}
-
-	// Output:
 }
 
 func TestWrap(t *testing.T) {

@@ -57,8 +57,6 @@ func ExampleStars() {
 	if err != nil {
 		log.Fatalf("could not save to file: %+v", err)
 	}
-
-	// Output:
 }
 
 func TestStars(t *testing.T) {

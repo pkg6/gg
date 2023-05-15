@@ -25,8 +25,6 @@ func ExampleClip() {
 	if err != nil {
 		log.Fatalf("could not save to file: %+v", err)
 	}
-
-	// Output:
 }
 
 func TestClip(t *testing.T) {

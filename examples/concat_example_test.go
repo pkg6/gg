@@ -37,8 +37,6 @@ func ExampleConcat() {
 	if err != nil {
 		log.Fatalf("could not save to file: %+v", err)
 	}
-
-	// Output:
 }
 
 func TestConcat(t *testing.T) {

@@ -69,8 +69,6 @@ func ExampleScatter() {
 	if err != nil {
 		log.Fatalf("could not save to file: %+v", err)
 	}
-
-	// Output:
 }
 
 func CreatePoints(n int) []gg.Point {

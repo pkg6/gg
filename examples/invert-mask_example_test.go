@@ -24,8 +24,6 @@ func ExampleInvertMask() {
 	if err != nil {
 		log.Fatalf("could not save to file: %+v", err)
 	}
-
-	// Output:
 }
 
 func TestInvertMask(t *testing.T) {

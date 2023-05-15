@@ -46,8 +46,6 @@ func ExampleRotatedText() {
 	if err != nil {
 		log.Fatalf("could not save to file: %+v", err)
 	}
-
-	// Output:
 }
 
 func TestRotatedText(t *testing.T) {

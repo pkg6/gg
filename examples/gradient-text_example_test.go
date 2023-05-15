@@ -52,8 +52,6 @@ func ExampleGradientText() {
 	if err != nil {
 		log.Fatalf("could not save to file: %+v", err)
 	}
-
-	// Output:
 }
 
 func TestGradientText(t *testing.T) {

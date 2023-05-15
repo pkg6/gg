@@ -46,7 +46,6 @@ func ExampleGradientLinear() {
 		log.Fatalf("could not save to file: %+v", err)
 	}
 
-	// Output:
 }
 
 func TestGradientLinear(t *testing.T) {

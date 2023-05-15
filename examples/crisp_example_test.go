@@ -51,8 +51,6 @@ func ExampleCrisp() {
 	if err != nil {
 		log.Fatalf("could not save to file: %+v", err)
 	}
-
-	// Output:
 }
 
 func TestCrisp(t *testing.T) {

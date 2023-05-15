@@ -43,8 +43,6 @@ func ExampleMeme() {
 	if err != nil {
 		log.Fatalf("could not save to file: %+v", err)
 	}
-
-	// Output:
 }
 
 func TestMeme(t *testing.T) {
