@@ -4,10 +4,10 @@ go 1.22
 
 require (
 	git.sr.ht/~sbinet/cmpimg v0.1.0
-	git.sr.ht/~sbinet/gg v0.3.1
+	git.sr.ht/~sbinet/gg v0.5.0
 	github.com/go-fonts/anton v0.1.2
-	github.com/go-fonts/liberation v0.3.1
-	github.com/go-fonts/xolonium v0.1.0
+	github.com/go-fonts/liberation v0.3.3
+	github.com/go-fonts/xolonium v0.1.1
 	golang.org/x/image v0.21.0
 )
 
