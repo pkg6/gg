@@ -382,7 +382,7 @@ func TestIssue85(t *testing.T) {
 			const (
 				W  = 1024.0
 				H  = 1024.0
-				nn = 10000
+				nn = 100000
 			)
 
 			var (
