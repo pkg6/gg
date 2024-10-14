@@ -11,7 +11,7 @@ import (
 	"git.sr.ht/~sbinet/gg"
 )
 
-func ExampleRotatedImage() {
+func Example_rotatedImage() {
 	const W = 400
 	const H = 500
 	im, err := gg.LoadPNG("testdata/gopher.png")
@@ -47,5 +47,5 @@ func ExampleRotatedImage() {
 }
 
 func TestRotatedImage(t *testing.T) {
-	chkimg(ExampleRotatedImage, t, "rotated-image.png")
+	chkimg(Example_rotatedImage, t, "rotated-image.png")
 }

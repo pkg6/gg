@@ -12,7 +12,7 @@ import (
 	"github.com/go-fonts/liberation/liberationsansregular"
 )
 
-func ExampleQuadratic() {
+func Example_quadratic() {
 	const S = 1000
 	dc := gg.NewContext(S, S)
 	dc.SetRGB(1, 1, 1)
@@ -72,5 +72,5 @@ func ExampleQuadratic() {
 }
 
 func TestQuadratic(t *testing.T) {
-	chkimg(ExampleQuadratic, t, "quadratic.png")
+	chkimg(Example_quadratic, t, "quadratic.png")
 }

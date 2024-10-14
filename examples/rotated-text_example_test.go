@@ -13,7 +13,7 @@ import (
 	"golang.org/x/image/font/opentype"
 )
 
-func ExampleRotatedText() {
+func Example_rotatedText() {
 	const S = 400
 	dc := gg.NewContext(S, S)
 	dc.SetRGB(1, 1, 1)
@@ -49,5 +49,5 @@ func ExampleRotatedText() {
 }
 
 func TestRotatedText(t *testing.T) {
-	chkimg(ExampleRotatedText, t, "rotated-text.png")
+	chkimg(Example_rotatedText, t, "rotated-text.png")
 }

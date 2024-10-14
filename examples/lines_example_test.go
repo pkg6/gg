@@ -12,7 +12,7 @@ import (
 	"git.sr.ht/~sbinet/gg"
 )
 
-func ExampleLines() {
+func Example_lines() {
 	const W = 1024
 	const H = 1024
 
@@ -45,5 +45,5 @@ func ExampleLines() {
 }
 
 func TestLines(t *testing.T) {
-	chkimg(ExampleLines, t, "lines.png")
+	chkimg(Example_lines, t, "lines.png")
 }

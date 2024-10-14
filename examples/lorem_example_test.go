@@ -20,7 +20,7 @@ var lines = []string{
 	"non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
 }
 
-func ExampleLorem() {
+func Example_lorem() {
 	const (
 		W = 800
 		H = 400
@@ -44,5 +44,5 @@ func ExampleLorem() {
 }
 
 func TestLorem(t *testing.T) {
-	chkimg(ExampleLorem, t, "lorem.png")
+	chkimg(Example_lorem, t, "lorem.png")
 }

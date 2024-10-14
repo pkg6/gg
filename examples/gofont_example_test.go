@@ -13,7 +13,7 @@ import (
 	"golang.org/x/image/font/opentype"
 )
 
-func ExampleGofont() {
+func Example_gofont() {
 	font, err := opentype.Parse(goregular.TTF)
 	if err != nil {
 		log.Fatal(err)
@@ -42,5 +42,5 @@ func ExampleGofont() {
 }
 
 func TestGofont(t *testing.T) {
-	chkimg(ExampleGofont, t, "gofont.png")
+	chkimg(Example_gofont, t, "gofont.png")
 }

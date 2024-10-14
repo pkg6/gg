@@ -11,7 +11,7 @@ import (
 	"git.sr.ht/~sbinet/gg"
 )
 
-func ExampleClip() {
+func Example_clip() {
 	dc := gg.NewContext(1000, 1000)
 	dc.DrawCircle(350, 500, 300)
 	dc.Clip()
@@ -28,5 +28,5 @@ func ExampleClip() {
 }
 
 func TestClip(t *testing.T) {
-	chkimg(ExampleClip, t, "clip.png")
+	chkimg(Example_clip, t, "clip.png")
 }

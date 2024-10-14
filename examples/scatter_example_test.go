@@ -14,7 +14,7 @@ import (
 	"github.com/go-fonts/liberation/liberationsansregular"
 )
 
-func ExampleScatter() {
+func Example_scatter() {
 	const S = 1024
 	const P = 64
 	dc := gg.NewContext(S, S)
@@ -85,5 +85,5 @@ func CreatePoints(n int) []gg.Point {
 }
 
 func TestScatter(t *testing.T) {
-	chkimg(ExampleScatter, t, "scatter.png")
+	chkimg(Example_scatter, t, "scatter.png")
 }

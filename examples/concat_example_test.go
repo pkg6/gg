@@ -12,7 +12,7 @@ import (
 	"git.sr.ht/~sbinet/gg"
 )
 
-func ExampleConcat() {
+func Example_concat() {
 	im1, err := gg.LoadPNG("testdata/baboon.png")
 	if err != nil {
 		panic(err)
@@ -40,5 +40,5 @@ func ExampleConcat() {
 }
 
 func TestConcat(t *testing.T) {
-	chkimg(ExampleConcat, t, "concat.png")
+	chkimg(Example_concat, t, "concat.png")
 }

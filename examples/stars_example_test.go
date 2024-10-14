@@ -13,7 +13,7 @@ import (
 	"git.sr.ht/~sbinet/gg"
 )
 
-func ExampleStars() {
+func Example_stars() {
 	makePoints := func(n int) []gg.Point {
 		result := make([]gg.Point, n)
 		for i := 0; i < n; i++ {
@@ -60,5 +60,5 @@ func ExampleStars() {
 }
 
 func TestStars(t *testing.T) {
-	chkimg(ExampleStars, t, "stars.png")
+	chkimg(Example_stars, t, "stars.png")
 }

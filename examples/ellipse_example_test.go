@@ -11,7 +11,7 @@ import (
 	"git.sr.ht/~sbinet/gg"
 )
 
-func ExampleEllipse() {
+func Example_ellipse() {
 	const S = 1024
 	dc := gg.NewContext(S, S)
 	dc.SetRGBA(0, 0, 0, 0.1)
@@ -36,5 +36,5 @@ func ExampleEllipse() {
 }
 
 func TestEllipse(t *testing.T) {
-	chkimg(ExampleEllipse, t, "ellipse.png")
+	chkimg(Example_ellipse, t, "ellipse.png")
 }

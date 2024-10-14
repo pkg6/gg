@@ -11,7 +11,7 @@ import (
 	"git.sr.ht/~sbinet/gg"
 )
 
-func ExampleCircle() {
+func Example_circle() {
 	dc := gg.NewContext(1000, 1000)
 	dc.DrawCircle(500, 500, 400)
 	dc.SetRGB(0, 0, 0)
@@ -24,5 +24,5 @@ func ExampleCircle() {
 }
 
 func TestCircle(t *testing.T) {
-	chkimg(ExampleCircle, t, "circle.png")
+	chkimg(Example_circle, t, "circle.png")
 }

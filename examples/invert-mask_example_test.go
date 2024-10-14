@@ -11,7 +11,7 @@ import (
 	"git.sr.ht/~sbinet/gg"
 )
 
-func ExampleInvertMask() {
+func Example_invertMask() {
 	dc := gg.NewContext(1024, 1024)
 	dc.DrawCircle(512, 512, 384)
 	dc.Clip()
@@ -27,5 +27,5 @@ func ExampleInvertMask() {
 }
 
 func TestInvertMask(t *testing.T) {
-	chkimg(ExampleInvertMask, t, "invert-mask.png")
+	chkimg(Example_invertMask, t, "invert-mask.png")
 }

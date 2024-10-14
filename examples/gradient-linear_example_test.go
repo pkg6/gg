@@ -12,7 +12,7 @@ import (
 	"git.sr.ht/~sbinet/gg"
 )
 
-func ExampleGradientLinear() {
+func Example_gradientLinear() {
 	dc := gg.NewContext(500, 400)
 
 	grad := gg.NewLinearGradient(20, 320, 400, 20)
@@ -49,5 +49,5 @@ func ExampleGradientLinear() {
 }
 
 func TestGradientLinear(t *testing.T) {
-	chkimg(ExampleGradientLinear, t, "gradient-linear.png")
+	chkimg(Example_gradientLinear, t, "gradient-linear.png")
 }

@@ -12,7 +12,7 @@ import (
 	"git.sr.ht/~sbinet/gg"
 )
 
-func ExampleGradientConic() {
+func Example_gradientConic() {
 	dc := gg.NewContext(400, 400)
 
 	grad1 := gg.NewConicGradient(200, 200, 0)
@@ -45,5 +45,5 @@ func ExampleGradientConic() {
 }
 
 func TestGradientConic(t *testing.T) {
-	chkimg(ExampleGradientConic, t, "gradient-conic.png")
+	chkimg(Example_gradientConic, t, "gradient-conic.png")
 }

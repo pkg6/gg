@@ -12,7 +12,7 @@ import (
 	"github.com/go-fonts/xolonium/xoloniumregular"
 )
 
-func ExampleUnicode() {
+func Example_unicode() {
 	const S = 4096 * 2
 	const T = 16 * 2
 	const F = 28
@@ -42,5 +42,5 @@ func ExampleUnicode() {
 }
 
 func TestUnicode(t *testing.T) {
-	chkimg(ExampleUnicode, t, "unicode.png")
+	chkimg(Example_unicode, t, "unicode.png")
 }

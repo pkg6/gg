@@ -18,7 +18,7 @@ const (
 	H = 512
 )
 
-func ExampleGradientText() {
+func Example_gradientText() {
 	dc := gg.NewContext(W, H)
 
 	// draw text
@@ -55,5 +55,5 @@ func ExampleGradientText() {
 }
 
 func TestGradientText(t *testing.T) {
-	chkimg(ExampleGradientText, t, "gradient-text.png")
+	chkimg(Example_gradientText, t, "gradient-text.png")
 }

@@ -12,7 +12,7 @@ import (
 	"git.sr.ht/~sbinet/gg"
 )
 
-func ExampleGradientRadial() {
+func Example_gradientRadial() {
 	dc := gg.NewContext(400, 200)
 
 	grad := gg.NewRadialGradient(100, 100, 10, 100, 120, 80)
@@ -36,5 +36,5 @@ func ExampleGradientRadial() {
 }
 
 func TestGradientRadial(t *testing.T) {
-	chkimg(ExampleGradientRadial, t, "gradient-radial.png")
+	chkimg(Example_gradientRadial, t, "gradient-radial.png")
 }

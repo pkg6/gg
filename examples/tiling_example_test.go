@@ -11,7 +11,7 @@ import (
 	"git.sr.ht/~sbinet/gg"
 )
 
-func ExampleTiling() {
+func Example_tiling() {
 	const (
 		NX = 4
 		NY = 3
@@ -36,5 +36,5 @@ func ExampleTiling() {
 }
 
 func TestTiling(t *testing.T) {
-	chkimg(ExampleTiling, t, "tiling.png")
+	chkimg(Example_tiling, t, "tiling.png")
 }

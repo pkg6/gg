@@ -11,7 +11,7 @@ import (
 	"git.sr.ht/~sbinet/gg"
 )
 
-func ExampleLinewidth() {
+func Example_linewidth() {
 	dc := gg.NewContext(1000, 1000)
 	dc.SetRGB(1, 1, 1)
 	dc.Clear()
@@ -32,5 +32,5 @@ func ExampleLinewidth() {
 }
 
 func TestLinewidth(t *testing.T) {
-	chkimg(ExampleLinewidth, t, "linewidth.png")
+	chkimg(Example_linewidth, t, "linewidth.png")
 }

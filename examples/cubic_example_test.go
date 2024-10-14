@@ -11,7 +11,7 @@ import (
 	"git.sr.ht/~sbinet/gg"
 )
 
-func ExampleCubic() {
+func Example_cubic() {
 	const S = 1000
 	dc := gg.NewContext(S, S)
 	dc.SetRGB(1, 1, 1)
@@ -50,5 +50,5 @@ func ExampleCubic() {
 }
 
 func TestCubic(t *testing.T) {
-	chkimg(ExampleCubic, t, "cubic.png")
+	chkimg(Example_cubic, t, "cubic.png")
 }

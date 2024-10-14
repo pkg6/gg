@@ -66,7 +66,7 @@ func randomCubic(dc *gg.Context) {
 	drawPoints(dc)
 }
 
-func ExampleBezier() {
+func Example_bezier() {
 	const (
 		S = 256
 		W = 8
@@ -98,5 +98,5 @@ func ExampleBezier() {
 }
 
 func TestBeziers(t *testing.T) {
-	chkimg(ExampleBezier, t, "beziers.png")
+	chkimg(Example_bezier, t, "beziers.png")
 }

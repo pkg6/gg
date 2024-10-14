@@ -11,7 +11,7 @@ import (
 	"git.sr.ht/~sbinet/gg"
 )
 
-func ExamplePatternFill() {
+func Example_patternFill() {
 	im, err := gg.LoadPNG("testdata/baboon.png")
 	if err != nil {
 		panic(err)
@@ -33,5 +33,5 @@ func ExamplePatternFill() {
 }
 
 func TestPatternFill(t *testing.T) {
-	chkimg(ExamplePatternFill, t, "pattern-fill.png")
+	chkimg(Example_patternFill, t, "pattern-fill.png")
 }

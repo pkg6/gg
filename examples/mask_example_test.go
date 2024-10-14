@@ -11,7 +11,7 @@ import (
 	"git.sr.ht/~sbinet/gg"
 )
 
-func ExampleMask() {
+func Example_mask() {
 	im, err := gg.LoadImage("testdata/baboon.png")
 	if err != nil {
 		log.Fatal(err)
@@ -29,5 +29,5 @@ func ExampleMask() {
 }
 
 func TestMask(t *testing.T) {
-	chkimg(ExampleMask, t, "mask.png")
+	chkimg(Example_mask, t, "mask.png")
 }

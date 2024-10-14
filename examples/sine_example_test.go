@@ -12,7 +12,7 @@ import (
 	"git.sr.ht/~sbinet/gg"
 )
 
-func ExampleSine() {
+func Example_sine() {
 	const W = 1200
 	const H = 60
 	dc := gg.NewContext(W, H)
@@ -39,5 +39,5 @@ func ExampleSine() {
 }
 
 func TestSine(t *testing.T) {
-	chkimg(ExampleSine, t, "sine.png")
+	chkimg(Example_sine, t, "sine.png")
 }

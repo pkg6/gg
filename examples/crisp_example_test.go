@@ -11,7 +11,7 @@ import (
 	"git.sr.ht/~sbinet/gg"
 )
 
-func ExampleCrisp() {
+func Example_crisp() {
 	const W = 1000
 	const H = 1000
 	const Minor = 10
@@ -54,5 +54,5 @@ func ExampleCrisp() {
 }
 
 func TestCrisp(t *testing.T) {
-	chkimg(ExampleCrisp, t, "crisp.png")
+	chkimg(Example_crisp, t, "crisp.png")
 }

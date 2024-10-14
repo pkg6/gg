@@ -12,7 +12,7 @@ import (
 	"github.com/go-fonts/anton/antonregular"
 )
 
-func ExampleMeme() {
+func Example_meme() {
 	const S = 1024
 	dc := gg.NewContext(S, S)
 	dc.SetRGB(1, 1, 1)
@@ -46,5 +46,5 @@ func ExampleMeme() {
 }
 
 func TestMeme(t *testing.T) {
-	chkimg(ExampleMeme, t, "meme.png")
+	chkimg(Example_meme, t, "meme.png")
 }

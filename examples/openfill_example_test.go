@@ -13,7 +13,7 @@ import (
 	"git.sr.ht/~sbinet/gg"
 )
 
-func ExampleOpenfill() {
+func Example_openfill() {
 	var (
 		rnd = rand.New(rand.NewSource(1234))
 		dc  = gg.NewContext(1000, 1000)
@@ -44,5 +44,5 @@ func ExampleOpenfill() {
 }
 
 func TestOpenfill(t *testing.T) {
-	chkimg(ExampleOpenfill, t, "openfill.png")
+	chkimg(Example_openfill, t, "openfill.png")
 }

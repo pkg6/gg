@@ -12,7 +12,7 @@ import (
 	"github.com/go-fonts/liberation/liberationsansregular"
 )
 
-func ExampleText() {
+func Example_text() {
 	const S = 1024
 	dc := gg.NewContext(S, S)
 	dc.SetRGB(1, 1, 1)
@@ -32,5 +32,5 @@ func ExampleText() {
 }
 
 func TestText(t *testing.T) {
-	chkimg(ExampleText, t, "text.png")
+	chkimg(Example_text, t, "text.png")
 }

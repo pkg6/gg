@@ -12,7 +12,7 @@ import (
 	"git.sr.ht/~sbinet/gg"
 )
 
-func ExampleSpiral() {
+func Example_spiral() {
 	const S = 1024
 	const N = 2048
 	dc := gg.NewContext(S, S)
@@ -37,5 +37,5 @@ func ExampleSpiral() {
 }
 
 func TestSpiral(t *testing.T) {
-	chkimg(ExampleSpiral, t, "spiral.png")
+	chkimg(Example_spiral, t, "spiral.png")
 }
