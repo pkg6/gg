@@ -1,6 +1,6 @@
 module git.sr.ht/~sbinet/gg
 
-go 1.19
+go 1.22
 
 require (
 	git.sr.ht/~sbinet/cmpimg v0.1.0
