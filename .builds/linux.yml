@@ -10,9 +10,9 @@ environment:
  GOFLAGS: -mod=readonly
  PATH: /home/build/sdk/go/bin:/usr/bin:/home/build/go/bin
 tasks:
- - install_go1_22: |
+ - install_go1_24: |
      mkdir -p /home/build/sdk
-     curl -L https://golang.org/dl/go1.22.8.linux-amd64.tar.gz | tar -C /home/build/sdk -xzf -
+     curl -L https://go.dev/dl/go1.24.6.linux-amd64.tar.gz | tar -C /home/build/sdk -xzf -
  - install_test_tools: |
      go install golang.org/x/tools/cmd/goimports@latest
      go install honnef.co/go/tools/cmd/staticcheck@latest
