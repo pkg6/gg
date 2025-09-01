@@ -14,7 +14,6 @@ tasks:
      mkdir -p /home/build/sdk
      curl -L https://go.dev/dl/go1.24.6.linux-amd64.tar.gz | tar -C /home/build/sdk -xzf -
  - install_test_tools: |
-     go install golang.org/x/tools/cmd/goimports@latest
      go install honnef.co/go/tools/cmd/staticcheck@latest
  - test_linux: |
      cd gg
@@ -27,8 +26,7 @@ tasks:
         go test -exec=wine ./...
  - check_gofmt: |
      cd gg
-     test -z "$(gofmt -s -l .)"
-     test -z "$(goimports -l .)"
+     test -z "$(go tool golang.org/x/tools/cmd/goimports -l .)"
  - check_staticcheck: |
      cd gg
      staticcheck ./...
