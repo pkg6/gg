@@ -9,9 +9,9 @@ import (
 	"math/rand"
 	"testing"
 
+	"codeberg.org/go-fonts/liberation/liberationsansbold"
+	"codeberg.org/go-fonts/liberation/liberationsansregular"
 	"git.sr.ht/~sbinet/gg"
-	"github.com/go-fonts/liberation/liberationsansbold"
-	"github.com/go-fonts/liberation/liberationsansregular"
 )
 
 func Example_scatter() {

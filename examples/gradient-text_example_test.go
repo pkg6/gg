@@ -9,8 +9,8 @@ import (
 	"log"
 	"testing"
 
+	"codeberg.org/go-fonts/anton/antonregular"
 	"git.sr.ht/~sbinet/gg"
-	"github.com/go-fonts/anton/antonregular"
 )
 
 const (

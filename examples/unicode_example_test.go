@@ -8,8 +8,8 @@ import (
 	"log"
 	"testing"
 
+	"codeberg.org/go-fonts/xolonium/xoloniumregular"
 	"git.sr.ht/~sbinet/gg"
-	"github.com/go-fonts/xolonium/xoloniumregular"
 )
 
 func Example_unicode() {

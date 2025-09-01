@@ -8,8 +8,8 @@ import (
 	"log"
 	"testing"
 
+	"codeberg.org/go-fonts/liberation/liberationsansregular"
 	"git.sr.ht/~sbinet/gg"
-	"github.com/go-fonts/liberation/liberationsansregular"
 )
 
 func Example_text() {
